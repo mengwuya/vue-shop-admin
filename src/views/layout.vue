@@ -11,8 +11,8 @@ text-color="#fff" active-text-color="#ffd04b">
 					<el-menu-item :index="index|numToString" v-for="(item,index) in navBar.list" :key="index">{{item.name}}</el-menu-item>
 					<el-submenu index="100">
 						<template slot="title">
-							<el-avatar size="small" src="http://img5.imgtn.bdimg.com/it/u=3321238736,733069773&fm=26&gp=0.jpg"></el-avatar>
-							summer
+							<el-avatar size="small" src="https://img2.woyaogexing.com/2020/02/06/d08999e8fdae4185b503a619a0a783dd!400x400.jpeg"></el-avatar>
+							梦无涯
 						</template>
 						<el-menu-item index="100-1">修改</el-menu-item>
 						<el-menu-item index="100-2">退出</el-menu-item>
@@ -36,7 +36,7 @@ text-color="#fff" active-text-color="#ffd04b">
 
 				</el-aside>
 				<!-- 主布局 -->
-				<el-main class="bg-light">
+				<el-main class="bg-light" style="padding-bottom: 60px;position: relative;">
 
 					<!-- 面包屑导航 -->
 					<div class="border-bottom mb-3 bg-white" v-if="bran.length > 0" style="padding: 20px;margin: -20px;">
@@ -117,7 +117,7 @@ text-color="#fff" active-text-color="#ffd04b">
 			getRouterBran() {
 				let b = this.$route.matched.filter(v => v.name)
 				let arr = []
-				b.forEach((v) => {
+				b.forEach((v, k) => {
 					// 过滤layout和index
 					if (v.name === 'index' || v.name === 'layout') return
 					arr.push({
@@ -136,6 +136,12 @@ text-color="#fff" active-text-color="#ffd04b">
 				this.bran = arr
 			},
 			handleSelect(key) {
+				if (key === '100-1') {
+					return console.log('修改资料')
+				}
+				if (key === '100-2') {
+					return console.log('退出登录')
+				}
 				this.navBar.active = key
 				// 默认选中跳转到当前激活
 				this.slideMenuActive = '0'
